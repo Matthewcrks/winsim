@@ -38,10 +38,8 @@ allBottom=overall.find_all("tr", {'class':'match-bottom'})
 
 
 team = input("Enter the name of a team: ")
-print(team)
 searchOpponent = input("Enter the name of an opponent: ")
-print(searchOpponent)
-homeOrAway = input("Should win probability be calculated for the home or away fixture?")
+homeOrAway = input("'Home' or 'Away'? ")
 
 
 
@@ -53,7 +51,7 @@ if 'Home' in homeOrAway:
 
 			topProb = allTop[i].find("td", {'class':'prob'}).text
 			opponent = allBottom[i].find("td", {'class':'team'}).text
-			print("Opponent: " + opponent + " " + topProb)
+			print(team + "'s win probability in their home fixture vs. " + searchOpponent + " is: " + topProb)
 
 else:
 
@@ -63,7 +61,7 @@ else:
 
 			teamProb = allBottom[i].find("td", {'class':'prob'}).text
 			opponent = allTop[i].find("td", {'class':'team'}).text
-			print("Opponent: " + opponent + ".\n" + team + "'s win probability is: " + teamProb)
+			print(team + "'s win probability in their away fixture vs. " + searchOpponent + " is: " + teamProb)
 
 
 
