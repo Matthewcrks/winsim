@@ -35,14 +35,15 @@ allBottom=overall.find_all("tr", {'class':'match-bottom'})
 #print(allBottom[1].find("td", {'class':'team'}).text)
 #print(allBottom[1].find("td", {'class':'prob'}).text)
 
-team = "Liverpool"
-searchOpponent = 'Man. City'
-homeOrAway = 'Away'
 
 
-#need to search home games and find only ones when arsenal is playing
-#then check for each of those games if they are playing chelsea
-#if playing chelsea, then find arsenal's win percentage
+team = input("Enter the name of a team: ")
+print(team)
+searchOpponent = input("Enter the name of an opponent: ")
+print(searchOpponent)
+homeOrAway = input("Should win probability be calculated for the home or away fixture?")
+
+
 
 if 'Home' in homeOrAway:
 
