@@ -33,21 +33,55 @@ overall=soup.find("div", {"class": "games-container upcoming"})
 #1. scrape every single team then make it a condition that if that a td has data-str then the next
 # td will have the prob for that game so just read the next td using find
 
-allBottom=overall.find_all("tr", {'class':'match-bottom'})
-print(allBottom[6].text)
 
 
-if "Arsenal" in allBottom[6].text:
-	print("HELLO")
 
+#define winprob array
 winProb = []
 
-i = 0
-while i < 30:
+
+allTop=overall.find_all("tr", {'class':'match-top'})
+#divide up all the possible data that can be extracted from match top
+print(allTop[0].find("td", {'class':'date'}).text)
+print(allTop[0].find("td", {'class':'team'}).text)
+print(allTop[0].find("td", {'class':'prob'}).text)
+print(allTop[0].find("td", {'class':'prob tie-prob'}).text)
+
+
+allBottom=overall.find_all("tr", {'class':'match-bottom'})
+print(allBottom[1].find("td", {'class':'team'}).text)
+print(allBottom[1].find("td", {'class':'prob'}).text)
+
+
+print("Arsenal at Home")
+for j in range(len(allTop)):
+
+	#find only the occurrences of Arsenal as an away team
+	if "Arsenal" in allTop[j].text:
+		#find arsenal's win prob in these games
+		#then put in array: Oppoenent team name and Arsenal's win prob vs them
+		topArsProb = allTop[j].find("td", {'class':'prob'}).text
+		opponent = allBottom[j].find("td", {'class':'team'}).text
+		winProb.append("Opponent: " + opponent + " " + topArsProb)
+
+
+
+
+#find only the occurrences of Arsenal as an away team
+#find arsenal's win prob in these games
+#then put in array: Oppoenent team name and Arsenal's win prob vs them
+for i in range(len(allBottom)):
+
 	if "Arsenal" in allBottom[i].text:
-		print('imm here')
-		winProb.append(allBottom[i].find("td", {'class':'prob'}).text)
-	i += 1
+
+		bottomArsProb = allBottom[i].find("td", {'class':'prob'}).text
+		opponent = allTop[i].find("td", {'class':'team'}).text
+		winProb.append("Opponent: " + opponent + " " + bottomArsProb)
+
+
+
+print("Here are arsenal's win probabilities for their remaining " + str(len(winProb)) + " fixtures.")
+
 
 for i in range(len(winProb)):
 	print(winProb[i])
