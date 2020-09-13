@@ -1,3 +1,6 @@
 Author: Matthew Crooks
 Date: 12/23/18
-Purpose: 
+
+Premier League scraping app is "search.py"
+To run the file, % python search.py
+ALL INPUT MUST BE ENTERED IN BETWEEN QUOTES

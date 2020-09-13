@@ -53,6 +53,11 @@ print(allBottom[1].find("td", {'class':'team'}).text)
 print(allBottom[1].find("td", {'class':'prob'}).text)
 
 
+searchOpponent = 'Chelsea'
+homeOrAway = 'Home'
+
+
+
 print("Arsenal at Home")
 for j in range(len(allTop)):
 
